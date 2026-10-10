@@ -27,7 +27,7 @@ trim_threads: 4
 align_threads: 8
 pileup_max_depth: 20000000
 stop_min_cov: 1
-stop_python: /home/lza/miniconda3/envs/bioinfo-tools/bin/python3
+stop_python: python3   # any python with pysam
 
 macs2_gsize: 2.7e9
 macs2_qvalue: 0.05
