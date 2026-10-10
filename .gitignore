@@ -1,0 +1,18 @@
+# Snakemake / python
+.snakemake/
+__pycache__/
+*.pyc
+
+# large test assets (reproducible: see README + download scripts)
+test_data/
+test_ref/
+test_out/
+
+# editors / misc
+*~
+*.swp
+.DS_Store
+slurm-*.out
+.Rhistory
+.RData
+.Ruserdata

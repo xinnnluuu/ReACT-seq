@@ -1,0 +1,53 @@
+# ReACT-seq test config (chr21 subset, process validation only).
+# Paths are relative to the pipeline directory — run snakemake from the
+# repository root, e.g.
+#   snakemake -s Snakefile --configfile test_config.yaml -j 8
+# stop_python must point to a python with pysam (used by RTstop_count.py).
+preset: human_trans
+
+samples:
+  - ERR1122128
+  - ERR1122129
+ip_samples:
+  - ERR1122128
+  - ERR1122129
+input_samples:
+  - ERR1122130
+
+datadir: test_data
+outdir: test_out
+refdir: test_ref
+
+libsdir: libs
+
+fq1_suffix: _R1.fastq.gz
+fq2_suffix: _R2.fastq.gz
+
+trim_threads: 4
+align_threads: 8
+pileup_max_depth: 20000000
+stop_min_cov: 1
+stop_python: /home/lza/miniconda3/envs/bioinfo-tools/bin/python3
+
+macs2_gsize: 2.7e9
+macs2_qvalue: 0.05
+peak_threads: 4
+
+find_stop_script_ecoli: ecoli_RT_findstopsite.py
+find_stop_script_human: find_highstop_hg38.py
+
+star_index: test_ref/STAR_hg38_chr21
+bowtie2_index: test_ref/bowtie2_rRNA_hg38/hg38_rRNA
+genome_fasta: test_ref/chr21.fa
+gene_plus_bed: test_ref/gene_plus.bed
+gene_minus_bed: test_ref/gene_minus.bed
+peaks_bed: test_ref/peaks_chr21.bed
+
+rRNA_index_ecoli: /path/to/bowtie2_rRNA_index_ecoli
+rRNA_index_human: test_ref/bowtie2_rRNA_hg38/hg38_rRNA
+
+tRNA_index: /path/to/bowtie2_tRNA_index
+trna_fasta: /path/to/tRNA.fa
+trna_plus_bed: /path/to/tRNA.plus.bed
+trna_minus_bed: /path/to/tRNA.minus.bed
+trna_peaks_bed: /path/to/tRNA.candidate_regions.bed
