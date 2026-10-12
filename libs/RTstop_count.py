@@ -35,7 +35,6 @@ VERSION_INFO = \
           1. only support the [fwd] or [rev] mode
           2. the reverse code have a huage bug, but I fixed it.
 
-    E-Mail: meng_howard@126.com
 """
 # Version information END ----------------------------------------------------
 

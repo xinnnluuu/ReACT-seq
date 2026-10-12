@@ -68,14 +68,3 @@ picard, deeptools (bamCoverage), macs2 + IDR (转录组预设), python3, R (exom
 ## 数据
 GEO: GSE221930 (E. coli, 处理 vs 对照, 多重复; SRA/BioProject 见 GEO 页面)。
 
-## 测试说明 (test_config.yaml)
-- 测试数据: GSE221930 的 ERR1122128/29 (IP) 与 ERR1122130 (Input), hg38 chr21 子集参考,
-  仅用于流程验证 (process validation), 不代表全基因组结果。
-- 已端到端验证 (2026-10): 上述三样本全部步骤跑通
-  (trim / 去 rRNA / STAR 比对 / 过滤去重 / pileup / stop-rate / 逐位点 stop /
-  高 stop 位点 / macs2 峰 / IDR)。
-- IDR 步骤要求合并后 ≥20 个峰; chr21 子集上重叠峰不足时, `idr_peaks` 保留 idr
-  已写出的合并峰并在 `peaks/idr.log` 记录 `WARNING: ... low-power dataset`
-  (idr 在规模检查前会把合并峰写入输出文件), 不再直接报错; 全基因组数据不受影响。
-- 测试参考可由 `bash test_ref_prep.sh` 重建 (chr21 fasta + 分链基因 BED +
-  STAR/bowtie2 索引 + 由流程自身 IP narrowPeak 得到的候选峰区域)。

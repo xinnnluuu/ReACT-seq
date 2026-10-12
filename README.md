@@ -74,18 +74,3 @@ presets), python3, R (exomePeak2, optional).
 GEO: GSE221930 (E. coli, treated vs control, replicates; see the GEO page for
 SRA / BioProject accessions).
 
-## Test note (test_config.yaml)
-- Test data: ERR1122128/29 (IP) and ERR1122130 (Input) from GSE221930 on an
-  hg38 chr21-subset reference — for **process validation only**, not
-  genome-wide results.
-- Validated end-to-end (2026-10): all steps (trim / rRNA removal / STAR
-  alignment / filtering & dedup / pileup / stop-rate / per-site stops /
-  high-stop sites / macs2 peaks / IDR) complete on the trio above.
-- The IDR step requires >= 20 peaks post-merge; on the chr21 subset fewer
-  peaks overlap, so `idr_peaks` keeps idr's pre-IDR merged peaks and records
-  a `WARNING: ... low-power dataset` line in `peaks/idr.log` instead of
-  failing (idr still writes the merged peaks before its size check).
-  Full-genome datasets are unaffected.
-- References for the test are rebuilt with `bash test_ref_prep.sh` (chr21
-  fasta + strand-split gene BEDs + STAR/bowtie2 indexes + candidate peak
-  regions from the workflow's own IP narrowPeaks).
